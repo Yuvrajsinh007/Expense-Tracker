@@ -66,7 +66,8 @@ const Register = () => {
                 required
                 value={name}
                 onChange={(e) => setName(e.target.value)}
-                className="w-[358px] px-24 py-2 border border-gray-300 rounded-xl shadow-sm 
+                autoComplete="name"
+                className="w-[358px] px-4 py-2 border border-gray-300 rounded-xl shadow-sm 
                 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition"
               />
             </div>
@@ -81,7 +82,8 @@ const Register = () => {
                 required
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className="w-[358px] px-24 py-2 border border-gray-300 rounded-xl shadow-sm 
+                autoComplete="email"
+                className="w-[358px] px-4 py-2 border border-gray-300 rounded-xl shadow-sm 
                 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition"
               />
             </div>
@@ -97,7 +99,8 @@ const Register = () => {
                   required
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
-                  className="w-[358px] px-24 py-2 border border-gray-300 rounded-xl shadow-sm 
+                  autoComplete="new-password"
+                  className="w-[358px] px-4 py-2 border border-gray-300 rounded-xl shadow-sm 
                   focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition"
                 />
                 <span
@@ -120,7 +123,8 @@ const Register = () => {
                   required
                   value={confirmPassword}
                   onChange={(e) => setConfirmPassword(e.target.value)}
-                  className="w-[358px] px-24 py-2 border border-gray-300 rounded-xl shadow-sm 
+                  autoComplete="new-password"
+                  className="w-[358px] px-4 py-2 border border-gray-300 rounded-xl shadow-sm 
                   focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition"
                 />
                 <span
