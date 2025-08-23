@@ -1,4 +1,3 @@
-import React from "react";
 import { Link } from "react-router-dom";
 import { BarChart3, ShieldCheck, NotebookPen } from "lucide-react";
 

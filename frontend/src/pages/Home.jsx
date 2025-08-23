@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react';
-import axios from 'axios';
+import { useEffect, useState, useCallback } from 'react';
+import axios from '../api/api';
 import { motion } from 'framer-motion';
 import { useAuth } from '../context/AuthContext';
 import AddExpenseForm from '../components/AddExpenseForm';
@@ -12,7 +12,10 @@ const Home = () => {
   const [expenses, setExpenses] = useState([]);
   const { user } = useAuth();
 
-  const fetchExpenses = async (filters = {}) => {
+  // Fetch expenses, optionally with filters
+  const fetchExpenses = useCallback(async (filters = {}) => {
+    if (!user?.token) return;
+
     try {
       const config = {
         headers: {
@@ -25,16 +28,17 @@ const Home = () => {
     } catch (error) {
       console.error('Error fetching expenses:', error);
     }
-  };
+  }, [user?.token]);
 
+  // Fetch expenses on component mount
   useEffect(() => {
-    if (user) fetchExpenses();
-  }, [user]);
+    fetchExpenses();
+  }, [fetchExpenses]);
 
   return (
     <div className="bg-gradient-to-br from-gray-50 to-gray-100 min-h-screen py-8 px-4 sm:px-6 lg:px-10">
       <div className="max-w-7xl mx-auto">
-        
+
         {/* Header */}
         <motion.div 
           className="mb-10 text-center"
@@ -52,9 +56,11 @@ const Home = () => {
 
         {/* Main Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-          
+
           {/* Left Column */}
           <div className="lg:col-span-1 space-y-6">
+
+            {/* Add Expense Form */}
             <motion.div 
               className="bg-white rounded-2xl shadow-lg p-6 border border-gray-100"
               whileHover={{ scale: 1.01 }}
@@ -63,6 +69,7 @@ const Home = () => {
               <AddExpenseForm onAdd={(exp) => setExpenses([exp, ...expenses])} />
             </motion.div>
 
+            {/* Summary */}
             <motion.div 
               className="bg-white rounded-2xl shadow-lg p-6 border border-gray-100"
               whileHover={{ scale: 1.01 }}
@@ -74,6 +81,8 @@ const Home = () => {
 
           {/* Right Column */}
           <div className="lg:col-span-2 space-y-6">
+
+            {/* Filter Bar */}
             <motion.div 
               className="bg-white rounded-2xl shadow-lg p-6 border border-gray-100"
               whileHover={{ scale: 1.01 }}
@@ -81,6 +90,7 @@ const Home = () => {
               <FilterBar onFilter={fetchExpenses} />
             </motion.div>
 
+            {/* Expense Trends Chart */}
             <motion.div 
               className="bg-white rounded-2xl shadow-lg p-6 border border-gray-100"
               initial={{ opacity: 0, y: 30 }}
@@ -91,6 +101,7 @@ const Home = () => {
               <Chart expenses={expenses} />
             </motion.div>
 
+            {/* Expense History */}
             <motion.div 
               className="bg-white rounded-2xl shadow-lg p-6 border border-gray-100"
               initial={{ opacity: 0, y: 30 }}
@@ -100,6 +111,7 @@ const Home = () => {
               <h2 className="text-lg font-semibold text-gray-800 mb-4">📝 Expense History</h2>
               <ExpenseList expenses={expenses} onUpdate={fetchExpenses} />
             </motion.div>
+
           </div>
         </div>
       </div>
