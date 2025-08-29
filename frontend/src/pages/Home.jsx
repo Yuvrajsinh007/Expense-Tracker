@@ -65,7 +65,7 @@ const Home = () => {
               className="bg-white rounded-2xl shadow-lg p-6 border border-gray-100"
               whileHover={{ scale: 1.01 }}
             >
-              <h2 className="text-lg font-semibold text-gray-800 mb-4">➕ Add Expense</h2>
+              <h2 className="text-lg font-semibold text-gray-800 mb-4"><i className="fa-solid fa-plus" style={{ color: "#2980b9" }}></i> Add Expense</h2>
               <AddExpenseForm onAdd={(exp) => setExpenses([exp, ...expenses])} />
             </motion.div>
 
@@ -74,7 +74,7 @@ const Home = () => {
               className="bg-white rounded-2xl shadow-lg p-6 border border-gray-100"
               whileHover={{ scale: 1.01 }}
             >
-              <h2 className="text-lg font-semibold text-gray-800 mb-4">📊 Summary</h2>
+              <h2 className="text-lg font-semibold text-gray-800 mb-4"><i class="fa-solid fa-clipboard-list" style={{color: "#2980b9"}}></i> Summary</h2>
               <Summary expenses={expenses} />
             </motion.div>
           </div>
@@ -97,7 +97,7 @@ const Home = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7 }}
             >
-              <h2 className="text-lg font-semibold text-gray-800 mb-4">📈 Expense Trends</h2>
+              <h2 className="text-lg font-semibold text-gray-800 mb-4"><i class="fa-solid fa-chart-simple" style={{color: "#2980b9"}}></i> Expense Trends</h2>
               <Chart expenses={expenses} />
             </motion.div>
 
@@ -108,7 +108,7 @@ const Home = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
             >
-              <h2 className="text-lg font-semibold text-gray-800 mb-4">📝 Expense History</h2>
+              <h2 className="text-lg font-semibold text-gray-800 mb-4"><i class="fa-solid fa-clock-rotate-left" style = {{color: "#2980b9"}}></i> Expense History</h2>
               <ExpenseList expenses={expenses} onUpdate={fetchExpenses} />
             </motion.div>
 

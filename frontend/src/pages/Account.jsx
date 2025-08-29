@@ -116,7 +116,7 @@ const Account = () => {
         {/* Profile Card */}
         <div className="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition">
           <h3 className="text-lg font-semibold text-gray-800 mb-4 border-b pb-2">
-            Profile Information
+          <i class="fa-solid fa-user"></i> Profile Information
           </h3>
 
           <div className="mb-6 text-gray-700">
@@ -209,7 +209,7 @@ const Account = () => {
 
         <div className="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition">
           <h3 className="text-lg font-semibold text-gray-800 mb-4 border-b pb-2">
-            Change Password
+          <i class="fa-solid fa-lock"></i> Change Password
           </h3>
           <form onSubmit={changePassword} className="space-y-4">
             {["currentPassword", "newPassword", "confirmPassword"].map((field) => (

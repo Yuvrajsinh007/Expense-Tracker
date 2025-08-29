@@ -33,7 +33,7 @@ const FilterBar = ({ onFilter }) => {
   return (
     <div className="bg-white shadow rounded-lg p-6 mb-6">
       <h3 className="text-lg font-semibold text-gray-900 mb-4">
-        Filter Expenses
+        <i class="fa-solid fa-filter" style={{color: "#2980b9" }}></i> Filter Expenses
       </h3>
       <form onSubmit={handleSubmit}>
         {/* Date Filters */}

@@ -40,33 +40,22 @@ const Summary = ({ expenses }) => {
       // Average per transaction
       const averageAmount = totalAmount / expenses.length;
 
-      // Time-based averages
-      const now = new Date();
-      const oneMonthAgo = new Date(now);
-      oneMonthAgo.setMonth(now.getMonth() - 1);
+      // ---- TIME RANGE CALC ----
+      const dates = expenses.map((exp) => new Date(exp.date));
+      const minDate = new Date(Math.min(...dates));
+      const maxDate = new Date(Math.max(...dates));
 
-      const oneWeekAgo = new Date(now);
-      oneWeekAgo.setDate(now.getDate() - 7);
+      // Total days covered (at least 1)
+      const totalDays =
+        Math.max(
+          1,
+          Math.ceil((maxDate - minDate) / (1000 * 60 * 60 * 24)) + 1
+        );
 
-      const expensesThisMonth = expenses.filter(
-        (exp) => new Date(exp.date) >= oneMonthAgo
-      );
-      const expensesThisWeek = expenses.filter(
-        (exp) => new Date(exp.date) >= oneWeekAgo
-      );
-
-      const monthlyTotal = expensesThisMonth.reduce(
-        (total, exp) => total + parseFloat(exp.amount),
-        0
-      );
-      const weeklyTotal = expensesThisWeek.reduce(
-        (total, exp) => total + parseFloat(exp.amount),
-        0
-      );
-
-      const monthlyAverage = monthlyTotal / 30; // daily avg over last month
-      const weeklyAverage = weeklyTotal / 7; // daily avg over last week
-      const dailyAverage = totalAmount / 30; // general daily avg
+      // Averages
+      const dailyAverage = totalAmount / totalDays;
+      const weeklyAverage = totalAmount / (totalDays / 7);
+      const monthlyAverage = totalAmount / (totalDays / 30);
 
       setSummary({
         totalAmount,

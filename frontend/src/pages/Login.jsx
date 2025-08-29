@@ -26,7 +26,7 @@ const Login = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-100 via-indigo-50 to-white flex flex-col justify-center py-12 px-6">
+    <div className="mt-[-1%] min-h-screen bg-gradient-to-br from-blue-100 via-indigo-50 to-white flex flex-col justify-center py-12 px-6">
       {/* Header */}
       <div className="sm:mx-auto sm:w-full sm:max-w-md text-center">
         <h2 className="text-4xl font-extrabold text-gray-900">
